@@ -116,11 +116,11 @@ fi
 
 # If you're Kirstie, then you're fine
 # First try the bcni:
-rot_bvecs_script=(/home/kw401/CAMBRIDGE_SCRIPTS/FSL_SCRIPTS/fdt_rotate_bvecs.sh)
+rot_bvecs_script=(./SCRIPTS/DTI_PROCESSING-master/fdt_rotate_bvecs.sh)
 
 if [[ ! -w ${rot_bvecs_script} ]]; then
     # Then try the cbu:
-    rot_bvecs_script=(/home/kw02/FSL_SCRIPTS/fdt_rotate_bvecs.sh)
+    rot_bvecs_script=(./SCRIPTS/DTI_PROCESSING-master/fdt_rotate_bvecs.sh)
     # And if it's not in either of those places
     if [[ ! -f ${rot_bvecs_script} ]]; then
         # Find out where this script is saved, and download the fdt_rotate_bvecs.sh
@@ -236,7 +236,7 @@ if [[ ! -f ${dir}/BEDPOSTX/data.nii.gz ]]; then
     # Only actually *run* bedpostx if the bedpost_option is "yes"
     if [[ ! -f ${dir}/BEDPOSTX.bedpostX/dyads2.nii.gz && ${bedpost_option} == "yes" ]]; then
         echo "    Running bedpostX"
-        bedpostx ${dir}/BEDPOSTX/ > ${logdir}/bedpostx 2> ${logdir}/errors_bedpostx
+        bedpostx_gpu ${dir}/BEDPOSTX/ > ${logdir}/bedpostx 2> ${logdir}/errors_bedpostx
     fi
     
 else
